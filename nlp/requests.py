@@ -32,7 +32,6 @@ class request_handler():
         count = 25
         urls = []
         for i in range(end):
-            print (i, end)
             if i == end-1:
                 count = final_count
             url = f'https://api.elsevier.com/content/search/scopus?start={start}&count={count}&query={search_string}&apiKey={self.apikey}'
