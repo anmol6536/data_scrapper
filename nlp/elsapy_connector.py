@@ -31,3 +31,4 @@ class elsapy_connector():
 
             if not count%20:
                 print (f'{count} articles processed')
+        return res
