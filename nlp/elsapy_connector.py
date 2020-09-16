@@ -3,7 +3,7 @@ from elsapy.elsdoc import FullDoc, AbsDoc
 
 class elsapy_connector():
     def __init__(self):
-        self.client = ElsClient(config['apikey'])
+        self.client = ElsClient(self.apikey)
         pass
 
     def pii_search(self, df, rows = None):
