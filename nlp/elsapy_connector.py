@@ -5,7 +5,6 @@ from . import requests
 class elsapy_connector():
     def __init__(self):
         req = requests.request_handler()
-        print (req.apikey)
         self.client = ElsClient(req.apikey)
         pass
 
