@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="example-pkg-YOUR-USERNAME-HERE", # Replace with your own username
+    name="nlp_hr", # Replace with your own username
     version="0.0.1",
     author="Anmol Gorakashakar",
     author_email="anmol@genecentrix.com",
