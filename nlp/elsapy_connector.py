@@ -3,6 +3,7 @@ from elsapy.elsdoc import FullDoc, AbsDoc
 
 class elsapy_connector():
     def __init__(self):
+        self.client = ElsClient(config['apikey'])
         pass
 
     def pii_search(self, df, rows = None):
@@ -13,7 +14,7 @@ class elsapy_connector():
         pii = df['pii'].dropna()
         for i in pii:
             data = FullDoc(sd_pii = i)
-            if data.read(client):
+            if data.read(self.client):
                 if type(data.data['originalText']) == str:
                     res.append([i, data, 'Paper found'])
                 else:
