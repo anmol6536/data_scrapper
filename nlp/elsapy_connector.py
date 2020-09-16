@@ -42,7 +42,7 @@ class elsapy_connector():
         doi = df['prism:doi'].dropna()
         for i in doi:
             data = FullDoc(doi = i)
-            if data.read(client):
+            if data.read(self.client):
                 if type(data.data['originalText']) == str:
                     res.append([i, data, 'paper found'])
                 else:
