@@ -1,5 +1,6 @@
 from elsapy.elsclient import ElsClient
 from elsapy.elsdoc import FullDoc, AbsDoc
+import pandas as pd
 from . import requests
 
 class elsapy_connector():
