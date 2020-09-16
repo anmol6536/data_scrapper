@@ -5,6 +5,7 @@ import pandas as pd
 from math import ceil
 
 
+@error.error
 class request_handler:
     def __init__(self):
         self.apikey = "222a2a95a093a5c6049c145c09ed85a9"

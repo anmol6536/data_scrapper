@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+@error.error
 def overview(df, fig):
     cols = [*df]
     rows = len(cols) / 3

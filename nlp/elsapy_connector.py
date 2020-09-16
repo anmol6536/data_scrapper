@@ -4,6 +4,7 @@ import pandas as pd
 from . import requests
 
 
+@error.error
 class elsapy_connector:
     def __init__(self):
         req = requests.request_handler()
