@@ -1,9 +1,11 @@
 from elsapy.elsclient import ElsClient
 from elsapy.elsdoc import FullDoc, AbsDoc
+from . import requests
 
 class elsapy_connector():
     def __init__(self):
-        self.client = ElsClient(self.apikey)
+        req = requests.request_handler()
+        self.client = ElsClient(req.apikey)
         pass
 
     def pii_search(self, df, rows = None):
