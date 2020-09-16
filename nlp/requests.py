@@ -10,6 +10,21 @@ class request_handler:
         self.apikey = "222a2a95a093a5c6049c145c09ed85a9"
 
     def get_summary(self, search_string):
+        """
+        Description:
+        ------------
+        Creates a dictionary of important information
+
+        Parameters:
+        -----------
+        search_string: string to be searched ['Drug Name']
+
+        Returns:
+        --------
+        summary: dictionary object with following keys
+            search_string: the query used
+            total_results: Number of articles found on Scopus
+        """
         search_string = search_string.replace(" ", "%20")
         url = f"https://api.elsevier.com/content/search/scopus?start=0&count=25&query={search_string}&apiKey={self.apikey}"
         res = requests.get(url)
@@ -30,7 +45,22 @@ class request_handler:
         return summary
 
     def get_urls(self, search_string, total_results=25):
-        # url generation
+        """
+        Description:
+        ------------
+        Creates a list of urls which are used to query scopus and pull relevant
+        information
+
+        Parameters:
+        -----------
+        search_string: string to be searched ['Drug Name']
+        total_results: number of papers to be queried
+        \t\tDefaults to 25
+
+        Returns:
+        --------
+        urls: list of URL strings
+        """
         start = 0
         end = ceil(total_results / 25)
         final_count = total_results % 25
@@ -45,6 +75,20 @@ class request_handler:
         return urls
 
     def get_res(self, url=""):
+        """
+        Description:
+        ------------
+        Queries scopus database and pulls infomation like pii, open access flag
+        doi, article type, pulication subtype etc.
+
+        Parameters:
+        -----------
+        url: url string which is used to query scopus
+
+        Returns:
+        --------
+        results: returns a dataframe with all fields provided by scopus
+        """
         error_collection = []
         res = requests.get(url)
         x = json.loads(res.text)
