@@ -1,5 +1,6 @@
 # nlp_hr
-![image][https://travis-ci.com/anmol6536/nlp_hr.svg?token=hJ7Zzp3tyqjxcTrX37PE&branch=master]
+![image](https://travis-ci.com/anmol6536/nlp_hr.svg?token=hJ7Zzp3tyqjxcTrX37PE&branch=master)
+
 To install nlp data-retrieval package:
 
   `pip install git+https://github.com/anmol6536/nlp_hr.git`
