@@ -2,9 +2,6 @@
 #libraries Import
 
 import pandas as pd
-import elsapy
-from elsapy.elsclient import ElsClient
-from elsapy.elsdoc import FullDoc, AbsDoc
 from . import requests
 
 def final_result(search_string, total_results = None):
