@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nlp",  # Replace with your own username
-    version="0.0.4",
+    version="0.0.5",
     author="Anmol Gorakashakar",
     author_email="anmol@genecentrix.com",
     description="Data collection package",
@@ -13,4 +13,5 @@ setuptools.setup(
     url="https://github.com/anmol6536/nlp_hr.git",
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
+    install_requires=["pandas", "numpy", "elsapy", "requests", "matplotlib"],
 )
