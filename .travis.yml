@@ -2,16 +2,16 @@ language: python
 python:
   - "3.8"
 
-install: 
+install:
   - pip install -r req.txt
 
 script:
-  - python historeceptomics/test_hr.py
-  
+  - python tests/test.py
+
 branches:
   only:
-    - dev
-  
-  
+    - master
+
+
 after_success:
   - codecov
