@@ -3,6 +3,7 @@ import json
 import string
 import pandas as pd
 from math import ceil
+from . import error
 
 
 @error.error
