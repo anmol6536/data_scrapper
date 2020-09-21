@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="nlp",  # Replace with your own username
+    name="bibliometry",  # Replace with your own username
     version="0.0.5",
     author="Anmol Gorakashakar",
     author_email="anmol@genecentrix.com",
