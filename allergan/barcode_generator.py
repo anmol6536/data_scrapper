@@ -14,14 +14,14 @@ class pl:
 
         # REVIEW: change function and add keyword arguments
 
-    def query_generator(gene):
+    def query_generator(self, gene):
         query = f"""
                 SELECT * FROM biogps_gmean
                 WHERE symbol in ('gene')
                 """
         return query
 
-    def biogps_plotter(gene, connection=cnx_hr):
+    def biogps_plotter(self, gene, connection=cnx_hr):
         query = self.query_generator(gene)
         df = pd.read_sql_query(query, connection).drop(["index", "symbol"], axis=1)
 
@@ -33,19 +33,3 @@ class pl:
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
         return Response(output.getvalue(), mimetype="image/png")
-
-
-def plot_png(gene):
-    fig = create_figure()
-    output = io.BytesIO()
-    FigureCanvas(fig).print_png(output)
-    return Response(output.getvalue(), mimetype="image/png")
-
-
-def create_figure():
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    xs = range(100)
-    ys = [random.randint(1, 50) for x in xs]
-    axis.plot(xs, ys)
-    return fig
