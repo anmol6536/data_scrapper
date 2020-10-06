@@ -8,7 +8,7 @@ postgres_hr = "postgresql://anmol_gorakshakar:Iwbo2D1iM@localhost:5432/historece
 cnx_hr = create_engine(postgres_hr)
 
 
-class pl(self):
+class pl:
     def __init__(self):
         return
 
