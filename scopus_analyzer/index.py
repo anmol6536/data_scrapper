@@ -3,10 +3,25 @@
 
 import pandas as pd
 from . import requests
+from . import error
 
 
-@error.error
-def final_result(search_string, total_results=0):
+# @error.error
+def final_result(search_string):
+    """
+    docstring for final_result
+    Description:
+    ------------
+    Fromats the query terms into appropriate URL and queries Scopus
+
+    Parameters:
+    -----------
+    search_string: Query Terms to search scopus with
+
+    Return:
+    -------
+    out:dataframe with all returned information
+    """
     req = requests.request_handler()
     apikey = req.apikey
     summary = req.get_summary(search_string)

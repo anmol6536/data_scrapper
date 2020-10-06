@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="bibliometry",  # Replace with your own username
-    version="0.0.5",
+    name="allergan",  # Replace with your own username
+    version="0.0.6",
     author="Anmol Gorakashakar",
     author_email="anmol@genecentrix.com",
     description="Data collection package",
