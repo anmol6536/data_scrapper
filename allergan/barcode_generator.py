@@ -5,6 +5,7 @@ import io
 from flask import Response
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
 
 postgres_hr = "postgresql://anmol_gorakshakar:Iwbo2D1iM@localhost:5432/historeceptomics"
 cnx_hr = create_engine(postgres_hr)
@@ -19,7 +20,7 @@ class pl:
     def query_generator(self, gene):
         query = f"""
                 SELECT * FROM biogps_gmean
-                WHERE symbol in ('{gene}')
+                WHERE symbol in ('{gene.upper()}')
                 """
         return query
 
@@ -32,6 +33,7 @@ class pl:
         fig = Figure()
         axis = fig.add_subplot(1, 1, 1)
         axis.plot(df.transpose())
+        plt.tick_params(labelrotation=90)
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
         return Response(output.getvalue(), mimetype="image/png")
