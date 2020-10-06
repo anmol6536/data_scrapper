@@ -22,7 +22,7 @@ class pl:
         return query
 
     def biogps_plotter(gene, connection=cnx_hr):
-        query = query_generator(gene)
+        query = self.query_generator(gene)
         df = pd.read_sql_query(query, connection).drop(["index", "symbol"], axis=1)
 
         # initialize the image
