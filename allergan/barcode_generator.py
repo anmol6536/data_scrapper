@@ -2,6 +2,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import os
 import io
+from flask import Response
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
