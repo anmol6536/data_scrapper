@@ -24,7 +24,7 @@ class pl:
     def biogps_plotter(self, gene, connection=cnx_hr):
         query = self.query_generator(gene)
         df = pd.read_sql_query(query, connection).drop(["index", "symbol"], axis=1)
-
+        print(df)
         # initialize the image
         # REVIEW: Add functionality to pass axes objects
         fig = Figure()
