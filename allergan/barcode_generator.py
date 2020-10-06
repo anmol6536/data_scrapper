@@ -18,7 +18,7 @@ class pl:
     def query_generator(self, gene):
         query = f"""
                 SELECT * FROM biogps_gmean
-                WHERE symbol in ('gene')
+                WHERE symbol in ('{gene}')
                 """
         return query
 
