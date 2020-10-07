@@ -29,7 +29,7 @@ class pl:
         df = pd.read_sql_query(query, connection).drop(["index", "symbol"], axis=1)
         # initialize the image
         # REVIEW: Add functionality to pass axes objects
-        fig = Figure(figsize=(20, 10))
+        fig = Figure(figsize=(12, 8))
         axis = fig.add_subplot(1, 1, 1)
         axis.plot(df.transpose())
         axis.tick_params(labelrotation=90)
