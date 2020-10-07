@@ -30,15 +30,10 @@ class pl:
         print(df)
         # initialize the image
         # REVIEW: Add functionality to pass axes objects
-        fig = plt.figure()
-        # fig = Figure()
-
+        fig = Figure()
         axis = fig.add_subplot(1, 1, 1)
         axis.plot(df.transpose())
         plt.tick_params(labelrotation=90)
-
-        # output = io.BytesIO()
-        # FigureCanvas(fig).print_png(output)
-
-        # return Response(output.getvalue(), mimetype="image/png")
-        return fig
+        output = io.BytesIO()
+        FigureCanvas(fig).print_png(output)
+        return Response(output.getvalue(), mimetype="image/png")
