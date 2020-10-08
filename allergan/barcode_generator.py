@@ -24,7 +24,7 @@ class pl:
 
     def biogps_plotter(self, gene, connection=cnx_al):
         query = self.query_generator(gene)
-        fig, ax = plt.subplots(figsize=(12, 8))
+        fig, ax = plt.subplots()
         # Annotate
         an1 = ax.annotate(
             "Single cell",
@@ -54,7 +54,7 @@ class pl:
         )
         new_header = dat.iloc[0]  # grab the first row for the header
         dat.columns = new_header  # set the header row as the df header
-        dat.plot(kind="bar", figsize=(16, 8), ax=ax)
+        dat.plot(kind="bar", figsize=(12, 8), ax=ax)
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
         plt.close()
