@@ -18,10 +18,8 @@ class pl:
         # REVIEW: change function and add keyword arguments
 
     def query_generator(self, gene):
-        query = f"""
-                SELECT * FROM biogps_gmean
-                WHERE symbol in ('{gene.upper()}')
-                """
+        query = f"""select * from barcode
+                            where gene in ({query})"""
         return query
 
     def biogps_plotter(self, gene, connection=cnx_al):
@@ -49,11 +47,7 @@ class pl:
         )
         ax.axvline(linewidth=3, color="r", x=3.5)
         dat = (
-            pd.read_sql_query(
-                f"""select * from barcode
-                                    where gene in ({query})""",
-                cnx_al,
-            )
+            pd.read_sql_query(query, cnx_al)
             .drop("index", axis=1)
             .set_index("gene")
             .transpose()
