@@ -7,8 +7,8 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 
-postgres_hr = "postgresql://anmol_gorakshakar:Iwbo2D1iM@localhost:5432/historeceptomics"
-cnx_hr = create_engine(postgres_hr)
+postgres_al = "postgresql://anmol_gorakshakar:Iwbo2D1iM@localhost:5432/allergan"
+cnx_al = create_engine(postgres_al)
 
 
 class pl:
@@ -26,13 +26,42 @@ class pl:
 
     def biogps_plotter(self, gene, connection=cnx_hr):
         query = self.query_generator(gene)
-        df = pd.read_sql_query(query, connection).drop(["index", "symbol"], axis=1)
-        # initialize the image
-        # REVIEW: Add functionality to pass axes objects
-        fig = Figure(figsize=(12, 8))
-        axis = fig.add_subplot(1, 1, 1)
-        axis.plot(df.transpose())
-        axis.tick_params(labelrotation=90)
+        fig, ax = plt.subplots(figsize=(16, 8))
+        # Annotate
+        an1 = ax.annotate(
+            "Single cell",
+            xy=(1.0, 1.0),
+            xycoords="data",
+            va="center",
+            ha="left",
+            bbox=dict(boxstyle="round", fc="w"),
+        )
+        an2 = ax.annotate(
+            "Bulk tissue",
+            xy=(2.0, 0.5),
+            xycoords=an1,  # (1, 0.5) of the an1's bbox
+            xytext=(30, 0),
+            textcoords="offset points",
+            va="center",
+            ha="left",
+            bbox=dict(boxstyle="round", fc="w"),
+            # arrowprops=dict(arrowstyle="->")
+        )
+        ax.axvline(linewidth=3, color="r", x=3.5)
+        dat = (
+            pd.read_sql_query(
+                f"""select * from barcode
+                                    where gene in ({query})""",
+                cnx_al,
+            )
+            .drop("index", axis=1)
+            .set_index("gene")
+            .transpose()
+        )
+        new_header = dat.iloc[0]  # grab the first row for the header
+        dat.columns = new_header  # set the header row as the df header
+        dat.plot(kind="bar", figsize=(16, 8), ax=ax)
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
+        plt.close()
         return Response(output.getvalue(), mimetype="image/png")
