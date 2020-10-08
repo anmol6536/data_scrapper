@@ -24,7 +24,7 @@ class pl:
                 """
         return query
 
-    def biogps_plotter(self, gene, connection=cnx_hr):
+    def biogps_plotter(self, gene, connection=cnx_al):
         query = self.query_generator(gene)
         fig, ax = plt.subplots(figsize=(16, 8))
         # Annotate

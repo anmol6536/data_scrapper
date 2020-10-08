@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="allergan",  # Replace with your own username
-    version="0.0.7.11",
+    version="0.0.7.12",
     author="Anmol Gorakashakar",
     author_email="anmol@genecentrix.com",
     description="Data collection package",
