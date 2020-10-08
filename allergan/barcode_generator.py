@@ -47,16 +47,18 @@ class pl:
         )
         ax.axvline(linewidth=3, color="r", x=3.5)
         dat = (
-            pd.read_sql_query(query, cnx_al)
+            pd.read_sql_query(
+                f"""select * from barcode 
+                                    where gene in ('{g.capitalize()}')""",
+                cnx_al,
+            )
             .drop("index", axis=1)
             .set_index("gene")
             .transpose()
         )
-        new_header = dat.iloc[0]  # grab the first row for the header
-        dat.columns = new_header  # set the header row as the df header
-        dat.plot(kind="bar", figsize=(12, 8), ax=ax)
+        plt.gcf().subplots_adjust(bottom=0.15)
+        dat.plot(kind="bar", ax=ax, use_index=True)
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
-        plt.gcf().subplots_adjust(bottom=0.15)
         plt.close()
-        return Response(output.getvalue(), mimetype="image/png")
+        Response(output.getvalue(), mimetype="image/png")
