@@ -24,7 +24,7 @@ class pl:
 
     def biogps_plotter(self, gene, connection=cnx_al):
         query = self.query_generator(gene)
-        fig, ax = plt.subplots(figsize=(16, 8))
+        fig, ax = plt.subplots(figsize=(12, 8))
         # Annotate
         an1 = ax.annotate(
             "Single cell",

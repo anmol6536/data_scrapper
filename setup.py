@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="allergan",  # Replace with your own username
-    version="0.0.7.16",
+    version="0.0.7.17",
     author="Anmol Gorakashakar",
     author_email="anmol@genecentrix.com",
-    description="Data collection package",
+    description="Data collection and analysis package",
     long_description_content_type="text/markdown",
     url="https://github.com/anmol6536/nlp_hr.git",
     packages=setuptools.find_packages(),
