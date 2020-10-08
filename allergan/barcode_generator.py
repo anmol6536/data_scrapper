@@ -57,5 +57,6 @@ class pl:
         dat.plot(kind="bar", figsize=(12, 8), ax=ax)
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
+        ax.xaxis.labelpad = 20
         plt.close()
         return Response(output.getvalue(), mimetype="image/png")
