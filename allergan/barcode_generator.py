@@ -24,7 +24,7 @@ class pl:
 
     def biogps_plotter(self, gene, connection=cnx_al):
         query = self.query_generator(gene)
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(10, 8))
         # Annotate
         an1 = ax.annotate(
             "Single cell",
@@ -55,7 +55,7 @@ class pl:
             .set_index("gene")
             .transpose()
         )
-        plt.gcf().subplots_adjust(bottom=0.15)
+        plt.gcf().subplots_adjust(bottom=0.3)
         dat.plot(kind="bar", ax=ax, use_index=True)
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
