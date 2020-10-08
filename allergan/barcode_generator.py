@@ -19,7 +19,7 @@ class pl:
 
     def query_generator(self, gene):
         query = f"""select * from barcode
-                            where gene in ({gene})"""
+                            where gene in ('{gene}')"""
         return query
 
     def biogps_plotter(self, gene, connection=cnx_al):
