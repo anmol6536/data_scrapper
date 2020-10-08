@@ -48,8 +48,7 @@ class pl:
         ax.axvline(linewidth=3, color="r", x=3.5)
         dat = (
             pd.read_sql_query(
-                f"""select * from barcode 
-                                    where gene in ('{g.capitalize()}')""",
+                query,
                 cnx_al,
             )
             .drop("index", axis=1)
@@ -61,4 +60,4 @@ class pl:
         output = io.BytesIO()
         FigureCanvas(fig).print_png(output)
         plt.close()
-        Response(output.getvalue(), mimetype="image/png")
+        return Response(output.getvalue(), mimetype="image/png")
