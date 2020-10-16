@@ -6,7 +6,7 @@ from . import requests
 from . import error
 
 
-# @error.error
+@error.error
 def final_result(search_string):
     """
     docstring for final_result
