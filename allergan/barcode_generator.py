@@ -7,6 +7,9 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 from . import error
+import seaborn as sns
+
+sns.set()
 
 postgres_al = "postgresql://anmol_gorakshakar:Iwbo2D1iM@localhost:5432/allergan"
 cnx_al = create_engine(postgres_al)
