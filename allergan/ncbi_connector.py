@@ -56,5 +56,5 @@ def database_search_run(query, db="gds"):
     handler = dataset_retriever()
     url = handler.url_handler(query_term=query, db=db)
     df = handler.database_overview(url, db=db)
-    df["result"].pop("uids")
+    # df["result"].pop("uids")
     return df
