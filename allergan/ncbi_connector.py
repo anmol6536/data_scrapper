@@ -15,7 +15,7 @@ class dataset_retriever:
         search_type="esearch",
         query_term="",
         db="pubmed",
-        retmax=1000,
+        retmax=500,
         retmode="json",
         webenv="",
         query_key="",
@@ -31,7 +31,15 @@ class dataset_retriever:
         if search_type == "esummary":
             webenv = f"&webenv={webenv}"
             query_key = f"&query_key={query_key}"
-            url = base + db + query_key + webenv + ret_data_type + "&usehistory=y"
+            url = (
+                base
+                + db
+                + query_key
+                + webenv
+                + ret_data_type
+                + ret_number
+                + "&usehistory=y"
+            )
         self.url = url
         return url
 

@@ -2,8 +2,11 @@
 # libraries Import
 
 import pandas as pd
+import os
 from . import requests
 from . import error
+
+data_folder = os.path.abspath("./data")
 
 
 @error.error
@@ -38,3 +41,9 @@ def final_result(search_string):
         return out
     else:
         raise ValueError(f"No papers founds for the search string {search_string}")
+
+
+def database_table():
+    table = pd.read_csv(f"{data_folder}/table.ob", sep="\t")
+    table = table.to_records()
+    return table
