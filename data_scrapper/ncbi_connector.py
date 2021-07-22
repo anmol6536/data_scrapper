@@ -1,14 +1,18 @@
 import requests
 from . import error
 import json
+import os
+
+data_folder = os.path.abspath("./data")
 
 
 class dataset_retriever:
+    def __init__(self):
+        db_names = pd.read_csv(f"{data_folder}/table.ob", sep="\t")
+        self.db_names = db_names
+        self.api_key = "99db02874a0478f2e6fe92a014f8e7616d08 "
 
-    #     def __init__(self):
-    #         db_names = pd.read_csv("/Users/anmol_gorakshakar/python/github/alpine_ridge/allergan/assets/db_names.ob", sep = '\t')
-    #         self.db_names = db_names
-    #     return
+    return
 
     def url_handler(
         self,
@@ -64,5 +68,4 @@ def database_search_run(query, db="gds"):
     handler = dataset_retriever()
     url = handler.url_handler(query_term=query, db=db)
     df = handler.database_overview(url, db=db)
-    # df["result"].pop("uids")
     return df
